@@ -37,10 +37,10 @@
     echo" <table border='1'>";
     echo "<tr><td><font face='Arial' size='2'>Google Books results " .
      "for: <b>$uby</b>:<br /><br /><td><tr>";
-    if (!$result[0]) echo "No books found for $search.";
+    if (count($results)== null || count($results) == 0) echo "No books found for $search.";
     else
     {
-      foreach($result[1] as $book)
+      foreach($results[1] as $book)
       {
       echo "<tr><td><img src='$book[5]' align='left' border='1'>";
       echo "<a href='$book[6]'>$book[0]</a> ($book[2], " .
