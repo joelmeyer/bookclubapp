@@ -20,7 +20,8 @@
      <td> <input type=submit value="Go"></td>
      <td> <?php
         $uby= $_GET['booksearch'];
-        echo "$uby";
+        $by=mysql_real_escape_string($uby);
+        echo "$by";
         ?>
     </td>
 </tr>
