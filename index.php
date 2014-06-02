@@ -15,9 +15,14 @@
 <form action="index.php" method="get">
 <table class='form'>
 <tr>
-   <td> Find book by Name or ISBN:</td>
-   <td> <input type="text" name="booksearch"</td>
- <td> <input type=submit value="Go"></td>
+     <td> Find book by Name or ISBN:</td>
+     <td> <input type="text" name="booksearch"</td>
+     <td> <input type=submit value="Go"></td>
+     <td> <?php
+        $uby= $_GET['booksearch'];
+        echo "$uby";
+        ?>
+    </td>
 </tr>
 </table>
 </form>
