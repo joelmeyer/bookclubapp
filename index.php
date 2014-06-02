@@ -40,12 +40,12 @@
     if (count($results)== null || count($results) == 0) echo "No books found for $search.";
     else
     {
-      foreach($results[1] as $book)
+      foreach($results as list($title, $author, $pub, $date, $desc, $thumb, $info, $preview))
       {
-      echo "<tr><td><img src='$book[5]' align='left' border='1'>";
-      echo "<a href='$book[6]'>$book[0]</a> ($book[2], " .
-           "$book[3])<br />$book[4]";
-      if ($book[7]) echo " (<a href='$book[7]'>preview</a>)";
+      echo "<tr><td><img src='$thumb' align='left' border='1'>";
+      echo "<a href='$info'>$title</a> ($author, " .
+           "$date)<br />$desc";
+      if ($preview) echo " (<a href='$preview'>preview</a>)";
       echo "<br clear='left'/><br /><td><tr>";
       }
     }
