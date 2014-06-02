@@ -31,9 +31,8 @@
 
 <div class="left">
  <?php
-    include("/var/www/bookclubapp/findBooks.php");
+    include("/var/www/bookclubapp/scripts/findBooks.php");
     $uby= $_GET['booksearch'];
-    $by=mysql_real_escape_string($uby);
     $results = findBooks($by, 1, 20, 'none');
     echo" <table border='1'>";
     echo "<tr><td><font face='Arial' size='2'>Google Books results " .
