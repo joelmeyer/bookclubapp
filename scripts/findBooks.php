@@ -1,7 +1,4 @@
 <?php
-
-function findBooks($search, $start, $count, $type)
-{
    // Plug-in 79: Search Google Books
    //
    // This plug-in takes a search query and returns matching
@@ -21,7 +18,28 @@ function findBooks($search, $start, $count, $type)
    //             return books with partial previews, if
    //             'full' only return books where the entire
    //             book can be read
+   $search = $_GET['searchText'];
+    $results = findBooks($search, 1, 20, 'none');
+    echo" <table border='1'>";
+    echo "<tr><td><font face='Arial' size='2'>Google Books results " .
+     "for: <b>$uby</b>:<br /><br /><td><tr>";
+    if (count($results)== null && count($results) == 0) echo "No books found for $search.";
+    else
+    {
+      foreach($results as list($title, $author, $pub, $date, $desc, $thumb, $info, $preview))
+      {
+      echo "<tr><td><img src='$thumb' align='left' border='1'>";
+      echo "<a href='$info'>$title</a> ($author, " .
+           "$date)<br />$desc";
+      if ($preview) echo " (<a href='$preview'>preview</a>)";
+      echo "<br clear='left'/><br /><td><tr>";
+      }
+    }
+    echo"</table>";
 
+
+function findBooks($search, $start, $count, $type)
+{
    $results = array();
    $url     = 'http://books.google.com/books/feeds/volumes?' .
               'q=' . rawurlencode($search) . '&start-index=' .

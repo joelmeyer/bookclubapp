@@ -1,56 +1,31 @@
 <!doctype html>
 <html>
 <head>
+<script  src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <title>Book Club</title>
 </head>
 <body>
+<script src="scripts/scripts.js"></script>
 <div id="header">
     <div class="headfont">
-<a class="head" href="tstudents.php"> Goshen Summer Book Club</a>
+        <a class="head" href="index.php"> Goshen Summer Book Club</a>
     </div>
 </div>
-    <div id="headform">
-<form action="index.php" method="get">
-<table class='form'>
-<tr>
-     <td> Find book by Name or ISBN:</td>
-     <td> <input type="text" name="booksearch"</td>
-     <td> <input type=submit value="Go"></td>
-     <td> <?php
-        $uby= $_GET['booksearch'];
-        $by=mysql_real_escape_string($uby);
-        echo "$by";
-        ?>
-    </td>
-</tr>
-</table>
-</form>
-</div>
+<div id="headform">
+<form>
 
-<div class="left">
- <?php
-    include("/var/www/bookclubapp/scripts/findBooks.php");
-    $uby= $_GET['booksearch'];
-    $results = findBooks($by, 1, 20, 'none');
-    echo" <table border='1'>";
-    echo "<tr><td><font face='Arial' size='2'>Google Books results " .
-     "for: <b>$uby</b>:<br /><br /><td><tr>";
-    if (count($results)== null || count($results) == 0) echo "No books found for $search.";
-    else
-    {
-      foreach($results as list($title, $author, $pub, $date, $desc, $thumb, $info, $preview))
-      {
-      echo "<tr><td><img src='$thumb' align='left' border='1'>";
-      echo "<a href='$info'>$title</a> ($author, " .
-           "$date)<br />$desc";
-      if ($preview) echo " (<a href='$preview'>preview</a>)";
-      echo "<br clear='left'/><br /><td><tr>";
-      }
-    }
-    echo"</table>";
-?>
+ Find book by Name or ISBN:<input name="searchText" id="searchText1" type="text"/>
+   <input name="buttonExecute" onclick="bookSearch(document.getElementById('searchText1').value)" type="button" value="Go" />
+
+    <table class='form'>
+        <tr>
+            <td id="searchTxt"> Results:
+            </td>
+        </tr>
+    </table>
+</form>
 </div>
     </body>
         </html>
