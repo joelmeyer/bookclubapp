@@ -31,7 +31,7 @@
     $results = findBooks($by, 1, 20, 'none');
     echo" <table border='1'>";
     echo "<tr><td><font face='Arial' size='2'>Google Books results " .
-     "for: <b>$by</b>:<br /><br /><td><tr>";
+     "for: <b>$uby</b>:<br /><br /><td><tr>";
     if (!$result[0]) echo "No books found for $search.";
     else
     {
