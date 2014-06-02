@@ -1,4 +1,4 @@
-!doctype html>
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -25,7 +25,7 @@
 
 <div class="left">
  <?php
-    include("findBooks.php");
+    include("/var/www/bookclubapp/findBooks.php");
     $uby= $_GET['booksearch'];
     $by=mysql_real_escape_string($uby);
     $results = findBooks($by, 1, 20, 'none');
