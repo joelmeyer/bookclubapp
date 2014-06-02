@@ -59,7 +59,7 @@ function findBooks($search, $start, $count, $type)
          $thumb, $info, $preview);
    }
 
-   return array(count($results), $results);
+   return $results;
 }
 
 ?>

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="style.css">
-<title>Students</title>
+<title>Book Club</title>
 </head>
 <body>
 <div id="header">
     <div class="headfont">
-<a class="head" href="tstudents.php"> Goshen College</a>
+<a class="head" href="tstudents.php"> Goshen Summer Book Club</a>
     </div>
 </div>
     <div id="headform">
