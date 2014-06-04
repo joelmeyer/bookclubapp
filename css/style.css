@@ -1,34 +1,10 @@
 body, div{
     margin: 0px;
     padding:0px;
+    font-family:helvetica;
+    background:white;
+}
 
-}
-#header
-{
-    height: 100px;
-    background: #49176D;
-    width: 100%;
-    min-width: 550px;
-}
-div.headfont
-{
-    font-family: Helvetica;
-    font-size: 2.5em;
-    color: white;
-    padding-left: 20px;
-    padding-top: 25px;
-}
-#headform{
-   // margin-bottom: 10px;
-    height: 60px;
-}
-div.image {
-   background-image:url(data:image/png;base64,iVBORwA<MoreBase64SringHere>);
-}
-a.head {
-    text-decoration: none;
-    color: white;
-}
 h2 {
     padding-left:15px;
     font: New York;
@@ -82,6 +58,28 @@ form {
    height: 40px;
 }
 
+#header
+{
+    height: 100px;
+    background: #49176D;
+}
+div.headfont
+{
+    font-family: Helvetica;
+    font-size: 2.5em;
+    color: white;
+    padding-left: 20px;
+    padding-top: 25px;
+    background:inherit;
+    min-width:550px;
+}
+#booksearch{
+padding-top:20px;
+padding-left:20px;
+height:40px;
+}
+
+
 #navbar
 {
     background: #49176D;
@@ -111,16 +109,22 @@ a:active {
 a.navbarbutton
 {
 padding-right:10px;
-}
-
-div.navbarfont
-{
 font-family: Helvetica;
 font-size:1.5em;
 background: #49176D;
 list-style-type:none;
 margin:0;
-padding:0;
 overflow:hidden;
 text-decoration: none;
+}
+
+#filter
+{
+    padding-left:20px;
+    height:20px;
+}
+
+#results
+{
+    height:50px;
 }

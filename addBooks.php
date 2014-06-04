@@ -8,31 +8,60 @@
 </head>
 <body>
 <script src="scripts/scripts.js"></script>
+
 <div id="header">
     <div class="headfont">
-        <a class="head" href="index.php">Goshen Summer Book Club</a>
+        <a href="index.php">Goshen Summer Book Club</a>
     </div>
 </div>
-<div id="navbar">
-		<div class="navbarfont">
-<a class="navbarbutton" href="index.php">home</a>
-<a class="navbarbutton" href="addbooks.php">add book</a>
-<a class="navbarbutton" href="pendingbooks.php">pending books</a>
-</div>
-</div>
-<div id="headform">
-<form>
 
- Find book by Name or ISBN:<input name="searchText" id="searchText1" type="text"/>
+<div id="navbar">
+		<a class="navbarbutton" href="index.php">home</a>
+		<a class="navbarbutton" href="addbooks.php">add book</a>
+		<a class="navbarbutton" href="pendingbooks.php">pending books</a>
+</div>
+
+<div id="booksearch">
+	<form>Find book by Name or ISBN: <input name="searchText" id="searchText1" type="text"/>
    <input name="buttonExecute" onclick="bookSearch(document.getElementById('searchText1').value)" type="button" value="Go" />
-    <input name="buttonExecute1" onclick="test(document.getElementById('searchText1').value)" type="button" value="test" />
-    <table class='form'>
-        <tr>
-            <td id="searchTxt"> Results:
+   </form>
+</div>
+
+<div id="filter">
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+</div>
+
+<div id="results">
+<table class='form'>
+<tr>
+<td id="searchTxt"> Results:
             </td>
         </tr>
     </table>
-</form>
 </div>
-    </body>
-        </html>
+</div>
+</body>
+</html>
