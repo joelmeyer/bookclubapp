@@ -18,34 +18,48 @@
    //             return books with partial previews, if
    //             'full' only return books where the entire
    //             book can be read
+    include_once "base.php";
+
+    set_include_path("/Users/Joel/google-api-php-client/src/" . PATH_SEPARATOR . get_include_path());
+    require_once 'Google/Client.php';
+    require_once 'Google/Service/Books.php';
    $search = $_GET['searchText'];
-    $results = findBooks($search, 1, 20, 'none');
-    echo" <table border='1'>";
-    echo "<tr><td><font face='Arial' size='2'>Google Books results " .
-     "for: <b>$search</b>:<br /><br /><td><tr>";
+    $results = findBookTEST($search);//, 1, 20, 'none');
+    //echo" <table border='1'>";
+    //echo "<tr><td><font face='Arial' size='2'>Google Books results " .
+     //"for: <b>$search</b>:<br /><br /><td><tr>";
+
+
     if (count($results)== null && count($results) == 0) echo "No books found for $search.";
     else
     {
-      foreach($results as list($title, $author, $pub, $date, $desc, $thumb, $info, $preview, $isbn))
-      {
-      echo "<tr><td><input type='radio' name='bookRadio'><img src='$thumb' align='left' border='1'>";
-      echo "<a href='$info'>$title</a> ($author, " .
-           "$date, $isbn)<br />$desc,";
-      if ($preview) echo " (<a href='$preview'>preview</a>)";
-      echo "<br clear='left'/><br /><td><tr>";
-      }
+        foreach ($results as $item)
+        {
+            echo $item['volumeInfo']['title'], "<br /> \n<td><tr>";
+        }
+      //foreach($results as list($title, $author, $pub, $date, $desc, $thumb, $info, $preview, $isbn))
+      //{
+      //echo "<tr><td><input type='radio' name='bookRadio'><img src='$thumb' align='left' border='1'>";
+      //echo "<a href='$info'>$title</a> ($author, " .
+      //     "$date, $isbn)<br />$desc,";
+      //if ($preview) echo " (<a href='$preview'>preview</a>)";
+      //echo "<br clear='left'/><br /><td><tr>";
+      //}
     }
     echo"<input name='addBookButtonExecute' onclick='test(document.getElementById('searchText1').value)' type='button' value='Add Book'></table>";
 
 
 function findBooks($search, $start, $count, $type)
 {
+
    $results = array();
+   $key = 'AIzaSyB7tO_ZxdxCsUCbvgx32NhfAYpTJ5BUS4c';
    $url     = 'http://books.google.com/books/feeds/volumes?' .
               'q=' . rawurlencode($search) . '&start-index=' .
               "$start&max-results=$count&min-viewability=" .
               "$type";
-   $xml     = @file_get_contents($url);
+   $newurl = 'https://www.googleapis.com/books/v1/volumes?q=$search&key=$key';
+   $xml     = @file_get_contents($newurl);
    if (!strlen($xml)) return array(FALSE);
 
    $xml  = str_replace('dc:', 'dc', $xml);
@@ -80,5 +94,22 @@ function findBooks($search, $start, $count, $type)
 
    return $results;
 }
+function findBookTEST($search)
+{
 
+    $client = new Google_Client();
+    $client->setApplicationName("Client_Library_Examples");
+    $apiKey = "AIzaSyB7tO_ZxdxCsUCbvgx32NhfAYpTJ5BUS4c";
+    if ($apiKey != 'AIzaSyB7tO_ZxdxCsUCbvgx32NhfAYpTJ5BUS4c') {
+      echo missingApiKeyWarning();
+    }
+    $client->setDeveloperKey($apiKey);
+
+    $service = new Google_Service_Books($client);
+    echo $search;
+    $optParams = array();//'maxResults' => '10');
+    $results = $service->volumes->listVolumes('$search', $optParams);
+
+    return $results;
+}
 ?>
