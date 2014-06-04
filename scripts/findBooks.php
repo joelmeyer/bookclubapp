@@ -35,7 +35,7 @@
     {
         foreach ($results as $item)
         {
-            echo $item['volumeInfo']['title'], "<br /> \n<td><tr>";
+            echo $item['items']['volumeInfo']['title'], "<br /> \n<td><tr>";
         }
       //foreach($results as list($title, $author, $pub, $date, $desc, $thumb, $info, $preview, $isbn))
       //{
@@ -94,7 +94,7 @@ function findBooks($search, $start, $count, $type)
 
    return $results;
 }
-function findBookTEST($search)
+function findBookTESTf($search)
 {
 
     $client = new Google_Client();
@@ -109,7 +109,20 @@ function findBookTEST($search)
     echo $search;
     $optParams = array();//'maxResults' => '10');
     $results = $service->volumes->listVolumes('$search', $optParams);
-
+    error_log(serialize($results));
     return $results;
+}
+
+function findBookTEST($search)
+{
+
+   $results = array();
+   $key = 'AIzaSyB7tO_ZxdxCsUCbvgx32NhfAYpTJ5BUS4c';
+
+   $newurl = "https://www.googleapis.com/books/v1/volumes?q=$search&key=$key";
+   error_log($newurl);
+   $xml     = json_decode(file_get_contents($newurl));
+   //var_dump($xml);
+   return $xml;
 }
 ?>

@@ -23,7 +23,7 @@
 
 <div id="booksearch">
 	<form>Find book by Name or ISBN: <input name="searchText" id="searchText1" type="text"/>
-   <input name="buttonExecute" onclick="bookSearch(document.getElementById('searchText1').value)" type="button" value="Go" />
+   <input name="buttonExecute" onclick="newTest(document.getElementById('searchText1').value)" type="button" value="Go" />
    </form>
 </div>
 
@@ -55,12 +55,11 @@
 </div>
 
 <div id="results">
-<table class='form'>
-<tr>
-<td id="searchTxt"> Results:
-            </td>
-        </tr>
+<form id="formBookRadio">
+    <table id="searchTxt" class='form'>
+
     </table>
+</form>
 </div>
 </div>
 </body>
