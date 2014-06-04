@@ -1,4 +1,6 @@
 <?php
+    ini_set("log_errors", 1);
+    ini_set("error_log", "/Users/Joel/bookclubapp/scripts/errors/php-error.log");
    // Plug-in 79: Search Google Books
    //
    // This plug-in takes a search query and returns matching
@@ -18,6 +20,7 @@
    //             return books with partial previews, if
    //             'full' only return books where the entire
    //             book can be read
+   error_log("Hello, errors!");
    $search = $_GET['searchText'];
     $results = findBooks($search, 1, 20, 'none');
     echo" <table border='1'>";
@@ -26,16 +29,14 @@
     if (count($results)== null && count($results) == 0) echo "No books found for $search.";
     else
     {
-      foreach($results as list($title, $author, $pub, $date, $desc, $thumb, $info, $preview, $isbn))
+      foreach($results as list($title, $isbn))
       {
-      echo "<tr><td><input type='radio' name='bookRadio'><img src='$thumb' align='left' border='1'>";
-      echo "<a href='$info'>$title</a> ($author, " .
-           "$date, $isbn)<br />$desc,";
-      if ($preview) echo " (<a href='$preview'>preview</a>)";
-      echo "<br clear='left'/><br /><td><tr>";
+      echo "<tr><td>";
+      echo "$title, $isbn";
+      echo "</td></tr>";
       }
     }
-    echo"<input name='addBookButtonExecute' onclick='test(document.getElementById('searchText1').value)' type='button' value='Add Book'></table>";
+    echo"</table>";
 
 
 function findBooks($search, $start, $count, $type)
@@ -54,28 +55,14 @@ function findBooks($search, $start, $count, $type)
    foreach($sxml->entry as $item)
    {
       $title   = $item->title;
-      $author  = $item->dccreator;
-      $pub     = $item->dcpublisher;
-      $date    = $item->dcdate;
-      $desc    = $item->dcdescription;
       $isbn    = $item->dcidentifier[1];
-      $thumb   = $item->link[0]['href'];
-      $info    = $item->link[1]['href'];
-      $preview = $item->link[2]['href'];
 
-      if (!strlen($pub))
-         $pub = $author;
-      if ($preview ==
-         'http://www.google.com/books/feeds/users/me/volumes')
-         $preview = FALSE;
-      if (!strlen($desc))
-         $desc = '(No description)';
-      if (!strstr($thumb, '&sig='))
-         $thumb = 'http://books.google.com/googlebooks/' .
-            'images/no_cover_thumb.gif';
+      if($isbn == null)
+      {
+        $isbn = 'null value';
+      }
 
-      $results[] = array($title, $author, $pub, $date, $desc,
-         $thumb, $info, $preview, $isbn);
+      $results[] = array($title,$isbn);
    }
 
    return $results;

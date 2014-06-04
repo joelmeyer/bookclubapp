@@ -18,7 +18,7 @@
 
  Find book by Name or ISBN:<input name="searchText" id="searchText1" type="text"/>
    <input name="buttonExecute" onclick="bookSearch(document.getElementById('searchText1').value)" type="button" value="Go" />
-
+    <input name="buttonExecute1" onclick="test(document.getElementById('searchText1').value)" type="button" value="test" />
     <table class='form'>
         <tr>
             <td id="searchTxt"> Results:
