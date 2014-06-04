@@ -7,17 +7,15 @@ body, div{
 {
     height: 100px;
     background: #49176D;
-    background-color:linear-gradient(center bottom , #2F0E46 1%, #49176D 54%, #2F0E46 99%, #411561 77%, #411561 26%) repeat scroll 0 0 #49176D;
-    background-image: -webkit-gradient(linear, left bottom, left top,
-    color-stop(0.01, rgb(47,14,70)), color-stop(0.54, rgb(73,23,109)), color-stop(0.99, rgb(47,14,70)),
-    color-stop(0.77, rgb(65,21,97)), color-stop(0.26, rgb(65,21,97)));
+    width: 100%;
+    min-width: 550px;
 }
 div.headfont
 {
-    font-family: Georgia;
+    font-family: Helvetica;
     font-size: 2.5em;
     color: white;
-    padding-left: 25px;
+    padding-left: 20px;
     padding-top: 25px;
 }
 #headform{
@@ -82,4 +80,47 @@ form {
     float:left;
     width:500px;
    height: 40px;
+}
+
+#navbar
+{
+    background: #49176D;
+    padding-left:30px;
+    height:50px;
+}
+a:link {
+    text-decoration: none;
+    color:white;
+}
+
+a:visited {
+    text-decoration: none;
+    color:white;
+}
+
+a:hover {
+    text-decoration: none;
+    color:white;
+}
+
+a:active {
+    text-decoration: underline;
+    color:white;
+}
+
+a.navbarbutton
+{
+padding-right:10px;
+}
+
+div.navbarfont
+{
+font-family: Helvetica;
+font-size:1.5em;
+background: #49176D;
+list-style-type:none;
+margin:0;
+padding:0;
+overflow:hidden;
+text-decoration: none;
 }

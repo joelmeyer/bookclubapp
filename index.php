@@ -10,8 +10,15 @@
 <script src="scripts/scripts.js"></script>
 <div id="header">
     <div class="headfont">
-        <a class="head" href="index.php"> Goshen Summer Book Club</a>
+        <a class="head" href="index.php">Goshen Summer Book Club</a>
     </div>
+</div>
+<div id="navbar">
+		<div class="navbarfont">
+<a class="navbarbutton" href="index.php">home</a>
+<a class="navbarbutton" href="addbooks.php">add book</a>
+<a class="navbarbutton" href="pendingbooks.php">pending books</a>
+</div>
 </div>
 <div id="headform">
 <form>
