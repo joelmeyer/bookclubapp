@@ -58,7 +58,7 @@
 <form id="formBookRadio">
     <table id="searchTxt" class='form'>
         <tr>
-            <td class="radio"></td>
+            <td class="radio"><input name='addBookButtonExecute' onclick='findChecked()' type='button' value='Add Book'></td>
             <td>Title</td>
             <td>Author</td>
             <td>Publisher</td>

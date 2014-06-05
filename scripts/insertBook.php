@@ -6,6 +6,24 @@
     $date = $_REQUEST['pubDate'];
     $description = $_REQUEST['desc'];
     $isbn = $_REQUEST['isbn'];
+    $pageCount = $_REQUEST['pageCount'];
+    $printType = $_REQUEST['printType'];
+
+    $success_array['msg'] = 'success';
+    $err_array['err'] = 'failed';
+
+
+
+
+    header('Content-type: application/json');
+    if($title != null)
+    {
+        echo json_encode($success_array);
+    }
+    else
+    {
+        echo json_encode($err_array);
+    }
     /* $insertResult = insertBooks($title, $author, $date, $description, $isbn);
     echo" <table border='1'>";
     echo "<tr><td>";
@@ -107,3 +125,4 @@ function query($sql) {
     return mysql_query($sql);
 }
 
+?>

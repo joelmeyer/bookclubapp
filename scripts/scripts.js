@@ -82,14 +82,21 @@ function bookSearch(searchterm)
 $.getJSON(googleAPI, function (response) {
     console.log("JSON Data: " + response.items);
     
+    //document.getElementById("searchTxt").innerHTML += "<tr><td><input name='addBookButtonExecute' onclick='findChecked()' type='button' value='Add Book'></td></tr>";
+
     for (var i = 0; i < response.items.length; i++) {
+
         var item = response.items[i];
+        if(item.volumeInfo.imageLinks == null)
+        {
+       		item.volumeInfo.imageLinks = '';
+        }
         // in production code, item.text should have the HTML entities escaped.
         document.getElementById("searchTxt").innerHTML += "<tr><td class='radio'><input type='radio' value='"+i+"' name='bookRadio'>" +
         	"</td><td id='title"+i+"'>" + item.volumeInfo.title + 
         	"</td><td id='author"+i+"'>" + item.volumeInfo.authors + 
         	"</td><td id='pub"+i+"'>" + item.volumeInfo.publisher + 
-        	"</td><td id='pudDate"+i+"'>" + item.volumeInfo.publishedDate + 
+        	"</td><td id='pubDate"+i+"'>" + item.volumeInfo.publishedDate + 
         	"</td><td id='pageCount"+i+"'>" + item.volumeInfo.pageCount + 
         	"</td><td id='printType"+i+"'>" + item.volumeInfo.printType + 
         	"</td><td id='isbn"+i+"'>" + item.volumeInfo.industryIdentifiers[0].identifier +
@@ -97,7 +104,6 @@ $.getJSON(googleAPI, function (response) {
         	"</td><td><img src=" + item.volumeInfo.imageLinks.smallThumbnail+ "></td></tr>";
 
       }
-      document.getElementById("searchTxt").innerHTML += "<tr><td><input name='addBookButtonExecute' onclick='findChecked()' type='button' value='Add Book'></td></tr>";
 });
 
 
@@ -137,33 +143,27 @@ function addBook(selectedValue)
 	var isbn = $('td[id="isbn'+selectedValue+'"]').text();
 	var desc = $('td[id="desc'+selectedValue+'"]').text();
     var dataString = 'pub=' + pub + '&title=' + title + '&author=' + author + '&pubDate=' + pubDate + '&pageCount=' + pageCount + '&printType=' + printType + '&isbn=' + isbn + '&desc=' + desc;
-    alert(encodeURI(dataString));
+    //alert(encodeURI(dataString));
 	$.ajax({
         type: "POST",
         url: "scripts/insertBook.php",
         data: dataString,
         dataType: "json",
-        success: function (result, status, xResponse) {
+        success: function (result) {
+        	//alert(data.status +  data.date);
             var message = result.msg;
+            console.log("JSON Data: " + result.msg);
+
             var err = result.err;
             var now = new Date();
             if (message != null) {
-                if (autosaveMode) {
-                    $('#submit_btn').attr({
-                        'value': 'Yadda saxlanıldı ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds()
-                    });
-                } else {
-                    $.notifyBar({
-                        cls: "success",
-                        html: message + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds()
-                    });
-                }
+                    
+                console.log("JSON Data: " + result.msg);
+
             }
             if (err != null) {
-                $.notifyBar({
-                    cls: "error",
-                    html: err
-                });
+
+                console.log("JSON Data: " + result.err);
             }
         }
     });
