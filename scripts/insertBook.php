@@ -1,18 +1,17 @@
 <?php
 
 
-    $title = $_GET['title'];
-    $author = $_GET['author'];
-    $date = $_GET['date'];
-    $description = $_GET['description'];
-    $isbn = $_GET['isbn'];
-
-    $insertResult = insertBooks($title, $author, $date, $description, $isbn);
+    $title = $_REQUEST['title'];
+    $author = $_REQUEST['author'];
+    $date = $_REQUEST['pubDate'];
+    $description = $_REQUEST['desc'];
+    $isbn = $_REQUEST['isbn'];
+    /* $insertResult = insertBooks($title, $author, $date, $description, $isbn);
     echo" <table border='1'>";
     echo "<tr><td>";
     if($insertResult == false) echo "Book add Failed!";
     else    echo "Book added successfully!!!";
-    echo"</td></tr></table>";
+    echo"</td></tr></table>";*/
 
 function insertBooks($title, $author, $date, $description, $isbn)
 {

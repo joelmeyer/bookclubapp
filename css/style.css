@@ -40,6 +40,10 @@ td.done {
 td.notdone {
     background-color: red;
 }
+td.radio {
+    width: 14px;
+}
+}
 td.clear {
     border: 1px solid #ffffff;
 }
@@ -54,8 +58,7 @@ td.clear {
 form {
    // margin: 1em;
     float:left;
-    width:500px;
-   height: 40px;
+
 }
 
 #header
@@ -126,5 +129,5 @@ text-decoration: none;
 
 #results
 {
-    height:50px;
+
 }
